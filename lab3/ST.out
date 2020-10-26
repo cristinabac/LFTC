@@ -1,0 +1,10 @@
+(3,0): left: (5,1) right: (8,"E prim") 
+(5,1): left: (7,2) right: None 
+(7,2): left: None right: None 
+(8,"E prim"): left: (9,"Nu e prim") right: None 
+(9,"Nu e prim"): left: None right: None 
+
+(1,n): left: (2,nr_divizori) right: (4,divizor) 
+(2,nr_divizori): left: None right: None 
+(4,divizor): left: None right: (6,creste_valoare) 
+(6,creste_valoare): left: None right: None 

@@ -1,5 +1,6 @@
 
 GLOBAL_SYMBOL_TABLE_ID = 0
+COUNT = [10]
 
 
 class Node:
@@ -8,6 +9,9 @@ class Node:
         self.right = None
         self.id = id
         self.val = key
+
+    def __str__(self):
+        return "(" + str(self.id) + "," + str(self.val) + ")"
 
 
 class BST:
@@ -51,6 +55,55 @@ class BST:
                 node = node.right
         return None
 
+    # Function to print binary tree in 2D
+    # It does reverse inorder traversal
+    def print2DUtil(self, root, space):
+
+        # Base case
+        if (root == None):
+            return
+
+        # Increase distance between levels
+        space += COUNT[0]
+
+        # Process right child first
+        self.print2DUtil(root.right, space)
+
+        # Print current node after space
+        # count
+        print()
+        for i in range(COUNT[0], space):
+            print(end=" ")
+        print(root)
+
+        # Process left child
+        self.print2DUtil(root.left, space)
+
+        # Wrapper over print2DUtil()
+
+    def print2D(self, root):
+
+        # space=[0]
+        # Pass initial space count as 0
+        self.print2DUtil(root, 0)
+
+    def print(self):
+        self.print2D(self.root)
+
+    def __print_preorder(self, node: Node):
+        string = ""
+        if node != None:
+            string += str(node) + ': '
+            string += 'left: ' + str(node.left) + ' '
+            string += 'right: ' + str(node.right) + ' '
+            string += '\n'
+            string += self.__print_preorder(node.left)
+            string += self.__print_preorder(node.right)
+        return string
+
+    def __str__(self):
+        return self.__print_preorder(self.root)
+
 
 class SymbolTable:
     def __init__(self):
@@ -62,20 +115,13 @@ class SymbolTable:
     def search(self, value):
         res = self._elems.search(value)
         if res == None:
-            return -1
+            return None
         else:
             return res.id
 
-# test
-sym1 = SymbolTable()
-sym1.insert("a")
-sym1.insert("b")
-sym1.insert("c")
-print(sym1.search("a"))
-print(sym1.search("b"))
-print(sym1.search("c"))
-sym2 = SymbolTable()
-sym2.insert(1)
-sym2.insert(3)
-print(sym2.search(1))
-print(sym2.search(3))
+    def print(self):
+        self._elems.print()
+
+    def __str__(self):
+        return str(self._elems)
+

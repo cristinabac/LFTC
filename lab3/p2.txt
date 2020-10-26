@@ -1,0 +1,13 @@
+numar_intreg n;
+da_la_pc >> n;
+
+numar_intreg nr_divizori primeste 0;
+
+parcurge(numar_intreg divizor primeste 1; divizor < n; divizor primeste divizor creste_valoarea 1)
+	oare(n % divizor egalite_fraternite 0)
+		nr_divizori primeste nr_divizori creste_valoare 1;
+
+oare(nr_divizori egalite_fraternite 2)
+	arata << "E prim";
+nup
+	arata << "Nu e prim";

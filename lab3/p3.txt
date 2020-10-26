@@ -1,0 +1,12 @@
+numar_intreg n;
+da_la_pc >> n;
+numar_intreg sir de 100 arr;
+parcurge(numar_intreg i primeste 0; i < n; i primeste i creste_valoarea 1)
+	da_la_pc >> sir[i];
+
+numar_intreg suma primeste 0;
+
+parcurge(numar_intreg i primeste 0; i < n; i primeste i creste_valoarea 1)
+	suma primeste suma creste_valoarea arr[i];
+
+arata << suma;

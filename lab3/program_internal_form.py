@@ -7,4 +7,7 @@ class ProgramInternalForm:
         self.__content.append((code, idd))
 
     def __str__(self):
-        return str(self.__content)
+        my_str = ""
+        for pair in self.__content:
+            my_str += str(pair) + "\n"
+        return my_str
