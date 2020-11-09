@@ -13,6 +13,7 @@ def main():
         print("3 - for the initial state(q0)")
         print("4 - for the list of final states(F)")
         print("5 - for the list of transitions(S)")
+        print("6 - check if a sequence is accepted")
         print("0 - exit")
         cmd = input("Enter your command:")
         if cmd == "0":
@@ -26,7 +27,17 @@ def main():
         elif cmd == "4":
             print(fa.F)
         elif cmd == "5":
-            print(' '.join([' -> '.join([str(part) for part in trans]) for trans in fa.S]))
+            print('S = { ' + ' '.join([str(trans) for trans in fa.S]) + ' }\n')
+        elif cmd == "6":
+            if fa.is_dfa() == False:
+                print("Not DFA!")
+            else:
+                seq = str(input("Enter the sequence:"))
+                seq.strip()
+                if fa.verify_sequence(seq) == True:
+                    print("The given sequence is accepted")
+                else:
+                    print("The given sequence is NOT accepted")
         else:
             print("invalid command")
 
