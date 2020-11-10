@@ -61,7 +61,7 @@ class FiniteAutomata:
             transition_dict[trans_tuple] = transition.end_state
 
         for s in sequence:
-            print(str((current_state, s)) + "->" + transition_dict[(current_state, s)])
+            # print(str((current_state, s)) + "->" + transition_dict[(current_state, s)])
             if (current_state, s) in transition_dict.keys():
                 current_state = transition_dict[(current_state, s)]  # get the next state
             else:
