@@ -1,0 +1,4 @@
+flex lang.lxi
+bison -d parser.y
+gcc lex.yy.x parser.tab.c -o program
+./program<p1.in
