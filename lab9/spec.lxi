@@ -1,0 +1,65 @@
+%{
+#include <math.h>
+#include <stdio.h>
+#include "parser.tab.h"
+int lines = 0;
+%}
+
+%option noyywrap
+
+DIGIT [0-9]
+NUMBER 0|[+-]?[1-9]{DIGIT}*
+CHARACTER [a-zA-Z0-9]
+STRING \"[a-zA-Z0-9 ]*\"
+CONSTANT {NUMBER}|{STRING}
+ID [a-zA-Z]([a-zA-Z]|[0-9]|\_)*{0,255}
+INVALID_ID [0-9]([a-zA-Z]|[0-9]|\_)*{0,255}
+
+
+%%
+
+
+creste_valoarea { printf("Operator: %s\n", yytext); return CRESTE_VALOAREA;}
+\- { printf("Operator: %s\n", yytext); return MINUS;}
+\* { printf("Operator: %s\n", yytext); return MULTIPLY;}
+\/ { printf("Operator: %s\n", yytext); return DIVISION;}
+\% { printf("Operator: %s\n", yytext); return MODULO;}
+\< { printf("Operator: %s\n", yytext); return LESS_THAN;}
+"<=" { printf("Operator: %s\n", yytext); return LESS_OR_EQUAL_THAN;}
+primeste { printf("Operator: %s\n", yytext); return PRIMESTE;}
+">=" { printf("Operator: %s\n", yytext); return GREATER_OR_EQUAL_THAN;}
+\> { printf("Operator: %s\n", yytext); return GREATER_THAN;}
+">>" { printf("Operator: %s\n", yytext); return IN_OPERATOR;}
+"<<" { printf("Operator: %s\n", yytext); return OUT_OPERATOR;}	
+egalite_fraternite { printf("Operator: %s\n", yytext); return EGALITE_FRATERNITE;}
+
+\; { printf("Separator: %s\n", yytext); return SEMI_COLON;}
+\. { printf("Separator: %s\n", yytext); return DOT;}
+\: { printf("Separator: %s\n", yytext); return COLON;}
+\( { printf("Separator: %s\n", yytext); return LEFT_ROUND_PARENTHESIS;}
+\) { printf("Separator: %s\n", yytext); return RIGHT_ROUND_PARENTHESIS;}
+\[ { printf("Separator: %s\n", yytext); return LEFT_SQUARE_PARENTHESIS;}
+\] { printf("Separator: %s\n", yytext); return RIGHT_SQUARE_PARENTHESIS;}
+\{ { printf("Separator: %s\n", yytext); return LEFT_ACOLADE;}
+\} { printf("Separator: %s\n", yytext); return RIGHT_ACOLADE;}
+\, { printf("Separator: %s\n", yytext); return COMA;}
+
+oare { printf("Reserved word: %s\n", yytext); return OARE;}
+nup { printf("Reserved word: %s\n", yytext); return NUP;}
+numar_intreg { printf("Reserved word: %s\n", yytext); return NUMAR_INTREG;}
+da_la_pc { printf("Reserved word: %s\n", yytext); return DA_LA_PC;}
+arata { printf("Reserved word: %s\n", yytext); return ARATA;}
+parcurge { printf("Reserved word: %s\n", yytext); return PARCURGE;}
+sir { printf("Reserved word: %s\n", yytext); return SIR;}
+de { printf("Reserved word: %s\n", yytext); return DE;}
+caracter { printf("Reserved word: %s\n", yytext); return CARACTER;}
+
+{CONSTANT} { printf("Constant: %s\n", yytext); return CONSTANT;}
+{ID} { printf("Identifier: %s\n", yytext); return ID;}
+
+[ \t]+          {}
+[\n]            {++lines;}
+{INVALID_ID}    {printf("Illegal symbol: %s at line %u\n", yytext, lines+1); return -1;}
+.               {printf("Illegal symbol: %s at line %u\n", yytext, lines+1); return -1;}  
+
+%%

@@ -1,0 +1,12 @@
+numar_intreg n;
+da_la_pc >> n;
+numar_intreg sir de 100 arr;
+caracter a;
+parcurge(numar_intreg i primeste 0; i<n; i primeste i creste_valoarea 1)
+     arata << a;
+numar_intreg a, b, c;
+a primeste 1;
+b primeste 2;
+c primeste 3;
+a primeste a creste_valoarea b;
+b primeste 2 * (1 creste_valoarea c);

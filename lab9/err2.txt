@@ -1,0 +1,2 @@
+numar_intreg a2 primeste &;
+numar_intreg 2b;

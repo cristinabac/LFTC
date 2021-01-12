@@ -1,0 +1,16 @@
+numar_intreg a1, a2,a3;
+a1 primeste 2;
+a2 primeste 4;
+a3 primeste 1;
+
+numar_intreg max;
+max primeste a1;
+
+oare(a2 > max)
+{
+	max primeste a2;}
+
+oare(a3 > max){
+	max primeste a3;}
+
+arata << max;
